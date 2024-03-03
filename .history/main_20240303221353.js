@@ -82,8 +82,6 @@ let playerScore = 0;
 
 function playGame(user_input) {
     const computerSelection = getComputerChoice();
-    const divScores = document.getElementById("scores");
-
     const divResult = document.getElementById("results");
     const roundResult = playRound(user_input, computerSelection);
 
@@ -92,16 +90,15 @@ function playGame(user_input) {
     } else if (roundResult.includes("lose")) {
         computerScore++;
     }
-    divResult.innerText = `Your input: ${user_input}\nComputer chose: ${computerSelection}\n${roundResult}\n`;
 
-    divScores.innerText = `Player Score: ${playerScore}, Computer Score: ${computerScore}\n`;
+    divResult.innerText = `Player Score: ${playerScore}, Computer Score: ${computerScore}\n${roundResult}`;
 
     if (playerScore === 5) {
-        divScores.innerText += "\nPlayer wins the game!";
+        divResult.innerText += "\nPlayer wins the game!";
         playerScore = 0;
         computerScore = 0;
     } else if (computerScore === 5) {
-        divScores.innerText += "\nComputer wins the game!";
+        divResult.innerText += "\nComputer wins the game!";
         playerScore = 0;
         computerScore = 0;
     }
